@@ -1,0 +1,302 @@
+<html>
+<head>
+       <title>source code: project.asm</title>
+       <meta name="description" content="source code">
+       <style>
+           a:link {text-decoration: none}
+           a:visited {text-decoration: none}
+           a:hover {text-decoration: none; color:#ff0000}
+       </style>
+</head>
+<body leftmargin=110  rightmargin=110 topmargin=20 bgcolor=#FFFFFF text=#000000 link=blue vlink=blue alink=blue>
+ 
+ 
+<!-- * -->
+ 
+ 
+
+
+
+
+&nbsp; &nbsp;<center> <font color=#FFFFFF> ;</font> <font size=2 face="Terminal"> project.asm </font></center>
+
+
+
+
+
+
+<!-- START AUTOMATIC ASM TO HTML EXPORT -->
+<pre><font size=2 face="Terminal">
+#make_bin#  
+ 
+<font color=#008000>; ( A ) </font>
+  
+<font color=#000064>include</font> emu8086.<font color=#0000FF>inc</font>   <font color=#008000>; VIVLIOTHIKI  </font>
+     
+   
+          
+                        
+<font color=#008000>; ( B )  </font>
+ 
+START:    <font color=#0000FF>MOV</font> <font color=#C80000>AX</font>,0h   <font color=#008000>; MIDENISMOS KATAXORITI  </font>
+          <font color=#0000FF>MOV</font> <font color=#C80000>BX</font>,0h   <font color=#008000>; MIDENISMOS KATAXORITI  </font>
+          <font color=#0000FF>MOV</font> <font color=#C80000>CX</font>,0h   <font color=#008000>; MIDENISMOS KATAXORITI  </font>
+          <font color=#0000FF>MOV</font> <font color=#C80000>DX</font>,0h   <font color=#008000>; MIDENISMOS KATAXORITI  </font>
+     
+<font color=#008000>; ( C )             </font>
+        GOTOXY 1,0     
+        PRINT <font color=#800080>'-_-_-_-_-_-_-_-_-_-_-_-_-_ ARXITEKTONIKI PROJECT 2 _-_-_-_-_-_-_-_-_-_-_-_-_'</font>                    
+        GOTOXY 1,2                        
+        PRINT <font color=#800080>'1-TIPOTA/EKSODOS'</font>  
+        GOTOXY 1,3  
+        PRINT <font color=#800080>'2-PROSTHESI'</font>                                 
+        GOTOXY 1,4  
+        PRINT <font color=#800080>'3-AFERESI'</font>  
+        GOTOXY 1,5  
+        PRINT <font color=#800080>'4-POLLAPLASIASMOS'</font>  
+        GOTOXY 1,6  
+        PRINT <font color=#800080>'5-DIERESI'</font>  
+        GOTOXY 1,7  
+        PRINT <font color=#800080>'6-LOGIKO_AND'</font>  
+        GOTOXY 1,8  
+        PRINT <font color=#800080>'7-LOGIKO_OR'</font>  
+        GOTOXY 1,9  
+        PRINT <font color=#800080>'8-LOGIKO_XOR'</font>  
+    
+  
+<font color=#008000>; ( D )  </font>
+ 
+    GOTOXY 3,12                          <font color=#008000>;  ORIZOUME THESI STO KERSORA  </font>
+    PRINT <font color=#800080>'Give First Number:  '</font>         <font color=#008000>;  EMFANISI MINIMATOS  </font>
+    <font color=#0000FF>CALL</font> SCAN_NUM                        <font color=#008000>; DINI O XRISTIS ENA NOUMERO KAI AFTOMATA APOTHIKEVETE STON KATAXORITI CX  </font>
+    <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0200h<font color=#0064C8>]</font>,<font color=#C80000>CX</font>                       <font color=#008000>; ANTIGRAFI STIN THESI MNIMIS [0200h] OTI IPARXI STON CX  </font>
+    <font color=#0000FF>MOV</font> <font color=#C80000>AX</font>,<font color=#C80000>CX</font>                            <font color=#008000>; ANTIGRAFI STON AX OTI IPARXI STON CX  </font>
+    GOTOXY 3,13                          <font color=#008000>;  ORIZOUME THESI STO KERSORA  </font>
+ 
+<font color=#008000>; ( E )   </font>
+    
+    PRINT <font color=#800080>'Give Second Number:  '</font>        <font color=#008000>;  EMFANISI MINIMATOS  </font>
+    <font color=#0000FF>CALL</font> SCAN_NUM                        <font color=#008000>; DINI O XRISTIS ENA NOUMERO KAI AFTOMATA APOTHIKEVETE STON KATAXORITI CX  </font>
+    <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>,<font color=#C80000>CX</font>                       <font color=#008000>; ANTIGRAFI STIN THESI MNIMIS [0202h] OTI IPARXI STON CX  </font>
+    <font color=#0000FF>MOV</font> <font color=#C80000>CX</font>,0h                            <font color=#008000>; MIDENISMOS TOU KATAXORITI CX  </font>
+      
+<font color=#008000>; ( F )       </font>
+                   GOTOXY 2,15            <font color=#008000>;  ORIZOUME THESI STO KERSORA   </font>
+                   PRINT <font color=#800080>'Give Choice: '</font>  <font color=#008000>;  EMFANISI MINIMATOS  </font>
+CHOOSE_FALSE_A:    <font color=#0000FF>CALL</font> SCAN_NUM          <font color=#008000>; DINI O XRISTIS ENA NOUMERO KAI AFTOMATA APOTHIKEVETE STON KATAXORITI CX  </font>
+     
+<font color=#008000>; ( G ) </font>
+  
+GOTOXY 1,17                    
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,1h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 1  </font>
+<font color=#0000FF>JE</font> TIPOTA         <font color=#008000>;   EAN TO CX INE ISO ME 1 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "TIPOTA"   </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,2h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 2  </font>
+<font color=#0000FF>JE</font> PROSTHESI      <font color=#008000>;   EAN TO CX INE ISO ME 2 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "PROSTHESI"  </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,3h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 3  </font>
+<font color=#0000FF>JE</font> AFERESI         <font color=#008000>;   EAN TO CX INE ISO ME 3 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "AFERESI"  </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,4h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 4  </font>
+<font color=#0000FF>JE</font> POLLAPLASIASMOS<font color=#008000>;   EAN TO CX INE ISO ME 4 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "POLLAPLASIASMO"  </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,5h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 5  </font>
+<font color=#0000FF>JE</font> DIERESI        <font color=#008000>;   EAN TO CX INE ISO ME 5 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "DIERESI"  </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,6h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 6  </font>
+<font color=#0000FF>JE</font> LOGIKO_AND     <font color=#008000>;   EAN TO CX INE ISO ME 6 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "LOGIKO_AND"  </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,7h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 7  </font>
+<font color=#0000FF>JE</font> LOGIKO_OR      <font color=#008000>;   EAN TO CX INE ISO ME 7 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "LOGIKO_OR"  </font>
+<font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,8h         <font color=#008000>; SIGKRISI AMA TO CX INE ISO ME 8  </font>
+<font color=#0000FF>JE</font> LOGIKO_XOR     <font color=#008000>;   EAN TO CX INE ISO ME 8 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "LOGIKO_XOR"  </font>
+ 
+<font color=#008000>; ( H )  </font>
+ 
+<font color=#0000FF>JMP</font> FALSE_A       <font color=#008000>;AN TO NOUMERO DEN INE ISO ME KANENA APO TOUS PARAPANO SINDIASMOUS TOTE TO PROGRAMMA THA KANI ALMA STO LABEL "FALSE_A"  </font>
+      
+  
+  
+<font color=#008000>; ( I )   </font>
+  
+ <font color=#008000>; ( 1 ) </font>
+  
+TIPOTA:                                   <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 1  </font>
+                      <font color=#0000FF>JMP</font> telos           <font color=#008000>; KANI ALMA STO TELOS TOU PROGRAMMATOS  </font>
+                     
+          
+          
+ <font color=#008000>; ( 2 ) </font>
+           
+PROSTHESI:                                <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 2  </font>
+                   <font color=#0000FF>CALL</font> PROSTHESI_a       <font color=#008000>; KALOUME TIN IPOROUTINA "PROSTHESIa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA         <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   </font>
+PROSTHESI_a:                                   
+                      PRINT <font color=#800080>'PROSTHESI '</font>  <font color=#008000>; EMFANISI MINIMATOS  </font>
+                      <font color=#0000FF>ADC</font> <font color=#C80000>AX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>      <font color=#008000>; KANI PROSTHESI OTI IPARXI STON AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI APOTHIKEVI TO APOTELESMA STON AX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font>      <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>RET</font>                 <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME   </font>
+  
+ <font color=#008000>; ( 3 )    </font>
+AFERESI:                                  <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 3   </font>
+                   <font color=#0000FF>CALL</font> AFERESI_a         <font color=#008000>; KALOUME TIN IPOROUTINA "AFERESIa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA         <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA"  </font>
+AFERESI_a:         
+                      PRINT <font color=#800080>'AFERESI '</font>    <font color=#008000>; EMFANISI MINIMATOS  </font>
+                      <font color=#0000FF>SBB</font> <font color=#C80000>AX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>      <font color=#008000>; KANI AFAIRESI OTI IPARXI STON AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI APOTHIKEVI TO APOTELESMA STON AX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font>      <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>RET</font>                 <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  </font>
+ <font color=#008000>; ( 4 ) </font>
+  
+POLLAPLASIASMOS:                              <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 4   </font>
+                   <font color=#0000FF>CALL</font> POLLAPLASIASMOS_a     <font color=#008000>; KALOUME TIN IPOROUTINA "POLLAPLASIASMOSa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA             <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   </font>
+POLLAPLASIASMOS_a:    
+                      PRINT <font color=#800080>'POLLAPLASIASMOS '</font><font color=#008000>; EMFANISI MINIMATOS    </font>
+                      <font color=#0000FF>MOV</font> <font color=#C80000>BX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>          <font color=#008000>; ANTIGRAFI STON KATAXORITI BX OTI IPARXI STI THESI MNIMIS [0202h]  </font>
+                      <font color=#0000FF>MUL</font> <font color=#C80000>BX</font>                  <font color=#008000>; POLLAPLASIASMOS TOU KATAXORITI BX ME TON KATAXORITI AX KAI APOTHIKEVETE TO APOTELESMA STON AX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font>          <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>RET</font>                     <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  </font>
+            
+<font color=#008000>; ( 5 )            </font>
+          
+DIERESI:                             <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 5   </font>
+                   <font color=#0000FF>CALL</font> DIERESI_a    <font color=#008000>; KALOUME TIN IPOROUTINA "DIERESIa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA    <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   </font>
+DIERESI_a:      
+                   PRINT <font color=#800080>'DIERESI '</font>  <font color=#008000>; EMFANISI MINIMATOS   </font>
+                      <font color=#0000FF>MOV</font> <font color=#C80000>BX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font> <font color=#008000>; ANTIGRAFI STON KATAXORITI BX OTI IPARXI STI THESI MNIMIS [0202h]  </font>
+                      <font color=#0000FF>DIV</font> <font color=#C80000>BX</font>         <font color=#008000>; DIERESI TOU KATAXORITI BX ME TON KATAXORITI AX, TO APOTELESMA APOTHIKEVETE STON AX KAI TO IPOLIPO STON DX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font> <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0206h<font color=#0064C8>]</font>,<font color=#C80000>DX</font> <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU DX STI THESI MNIMIS [0206]  </font>
+                      <font color=#0000FF>RET</font>            <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  </font>
+             
+ <font color=#008000>; ( 6 )            </font>
+             
+LOGIKO_AND:                               <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 6  </font>
+                   <font color=#0000FF>CALL</font> LOGIKO_AND_a      <font color=#008000>; KALOUME TIN IPOROUTINA "LOGIKO_ANDa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA         <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   </font>
+LOGIKO_AND_a:     
+                      PRINT <font color=#800080>'LOGIKO AND '</font> <font color=#008000>; EMFANISI MINIMATOS    </font>
+                      <font color=#0000FF>AND</font> <font color=#C80000>AX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>      <font color=#008000>; XRISIMOPOIEI TIN PRAKSI TOU LOGIKOU AND GIA TO AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI TO APOTELESMA APOTHIKEVETE STON AX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font>      <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>RET</font>                 <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  </font>
+             
+ <font color=#008000>; ( 7 )            </font>
+             
+LOGIKO_OR:                                  <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 7  </font>
+                   <font color=#0000FF>CALL</font> LOGIKO_OR_a         <font color=#008000>; KALOUME TIN IPOROUTINA "LOGIKO_ORa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA           <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   </font>
+LOGIKO_OR_a:    
+                      PRINT <font color=#800080>'LOGIKO OR '</font>    <font color=#008000>; EMFANISI MINIMATOS   </font>
+                      <font color=#0000FF>OR</font> <font color=#C80000>AX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>         <font color=#008000>; XRISIMOPOIEI TIN PRAKSI TOU LOGIKOU OR GIA TO AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI TO APOTELESMA APOTHIKEVETE STON AX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font>        <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>RET</font>                   <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  </font>
+           
+ <font color=#008000>; ( 8 )           </font>
+           
+LOGIKO_XOR:                                 <font color=#008000>; ERXETE EDO OTAN TO CX INE ISO ME TO 8  </font>
+                   <font color=#0000FF>CALL</font> LOGIKO_XOR_a        <font color=#008000>; KALOUME TIN IPOROUTINA "LOGIKO_XORa"  </font>
+                   <font color=#0000FF>JMP</font> APOTELESMA           <font color=#008000>; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   </font>
+LOGIKO_XOR_a:     
+                      PRINT <font color=#800080>'LOGIKO XOR '</font>   <font color=#008000>; EMFANISI MINIMATOS        </font>
+                      <font color=#0000FF>XOR</font> <font color=#C80000>AX</font>,<font color=#0064C8>[</font>0202h<font color=#0064C8>]</font>        <font color=#008000>; XRISIMOPOIEI TIN PRAKSI TOU LOGIKOU XOR GIA TO AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI TO APOTELESMA APOTHIKEVETE STON AX  </font>
+                      <font color=#0000FF>MOV</font> <font color=#0064C8>[</font>0204h<font color=#0064C8>]</font>,<font color=#C80000>AX</font>        <font color=#008000>; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] </font>
+                      <font color=#0000FF>RET</font>                   <font color=#008000>; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME           </font>
+<font color=#008000>; ( J ) </font>
+             
+APOTELESMA:         
+                   PRINT <font color=#800080>'-&gt; TO APOTELESMA INE: _-_-_-_-_-_-_-_  '</font>  <font color=#008000>; EMFANISI MINIMATOS </font>
+                   <font color=#0000FF>CALL</font> PRINT_NUM                      <font color=#008000>; EMFANISI OTI IPARXI APOTHIKEVMENO STON AX  </font>
+                   PRINT <font color=#800080>'  _-_-_-_-_-_-_-_'</font>           <font color=#008000>; EMFANISI MINIMATOS  </font>
+                   GOTOXY 1,19                         <font color=#008000>; ORIZOUME THESI STO KERSORA        </font>
+                   PRINT <font color=#800080>'PRESS ANY KEY TO CONTINUE'</font>   <font color=#008000>; EMFANISI MINIMATOS  </font>
+                   <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,0h                           <font color=#008000>; MIDENISMOS TOU AH  </font>
+                   <font color=#0000FF>INT</font> 16h                             <font color=#008000>; KANI PAUSE TO PROGRAMMA KAI PERIMENI APO TO XRISTI NA PATISI ENA PLIKTRO GIA SINEXIA         </font>
+                   GOTOXY 1,19                         <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+                   PRINT <font color=#800080>'                         '</font>     
+                   GOTOXY 1,20                         <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+                   PRINT <font color=#800080>'WOULD YOU LIKE TO RUN THE PROGRAM AGAIN ?'</font>  <font color=#008000>; EMFANISI MINIMATOS  </font>
+                   print <font color=#800080>'     '</font>  
+                   PRINT <font color=#800080>'1=YES    2=NO'</font>         <font color=#008000>; EMFANISI MINIMATOS  </font>
+                   GOTOXY 1,22                   <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+                   PRINT <font color=#800080>'Give Choice: '</font>         <font color=#008000>; EMFANISI MINIMATOS  </font>
+<font color=#008000>; ( K ) </font>
+  
+CHOOSE_FALSE_B:    
+                   <font color=#0000FF>CALL</font> SCAN_NUM      <font color=#008000>; DINI O XRISTIS ENA NOUMERO KAI AFTOMATA APOTHIKEVETE STON KATAXORITI CX  </font>
+                   <font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,1h          <font color=#008000>; SIGKRISI AN TO CX INE ISO ME 1 TOTE EKTELITE I AMESOS EPOMENI ENTOLI IDALOS AGNOA TIN AMESOS EPOMENI ENTOLI  </font>
+                   <font color=#0000FF>JE</font> AGAIN           <font color=#008000>; ALMA STO LABEL "AGAIN"  </font>
+                   <font color=#0000FF>CMP</font> <font color=#C80000>CX</font>,2h          <font color=#008000>; SIGKRISI AN TO CX INE ISO ME 2 TOTE EKTELITE I AMESOS EPOMENI ENTOLI IDALOS AGNOA TIN AMESOS EPOMENI ENTOLI  </font>
+                   <font color=#0000FF>JE</font> TELOS           <font color=#008000>; ALMA STO LABEL "TELOS"  </font>
+                   <font color=#0000FF>JMP</font> FALSE_B        <font color=#008000>; AN KAMIA APO TIS PROIGOUMENES SINTHIKES DEN ISXIEI TOTE EKTELITE  AFTI I ENTOLI I OPOIA KANI ALMA STO LABEL "FALSE_B" KAI KSANADINI O XRISTIS EPILOGI  </font>
+  
+  
+  
+       
+       
+       
+       
+       
+  
+AGAIN:       
+             <font color=#0000FF>CALL</font> CLEAR_SCREEN   <font color=#008000>; KATHARIZI TIN OTHONI  </font>
+             <font color=#0000FF>JMP</font> START           <font color=#008000>; ALMA STO LABEL "START"  </font>
+   
+  
+  
+  
+FALSE_A:               <font color=#008000>; GINETE ALMA EDO OTAN O XRISTIS DOSI LATHOS EPILOGI PRAKSIS GIA NA EMFANISTOU TA KATALILA MINIMATA LATHOUS EPILOGIS   </font>
+       PRINT <font color=#800080>'THE CHOICE YOU GAVE IS NOT ACCEPTABLE '</font>     <font color=#008000>; EMFANISI MINIMATOS  </font>
+       GOTOXY 2,15                                        <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+       PRINT <font color=#800080>'CHOOSE AGAIN: '</font>                             <font color=#008000>; EMFANISI MINIMATOS  </font>
+       <font color=#0000FF>JMP</font> CHOOSE_FALSE_A                                 <font color=#008000>; ALMA STO LABEL "CHOOSE_FALSE_A" ETSI OSTE NA MPORI KSANADOSI O XRISTIS EPILOGI PRAKSIS  </font>
+                                  
+         
+  
+FALSE_B:                 <font color=#008000>; AN O XRISTIS DOSI LATHOS EPILOGI GIA TO AN THA KSANATREKSI TO PROGRAMMA I OXI TOTE KANI ALMA EDO KAI EMFANIZONTE TA KATALILA MINIMATA LATHOUS EPILOGIS                                   </font>
+               GOTOXY 1,23                                     <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+               PRINT <font color=#800080>'THE CHOICE YOU GAVE IS NOT ACCEPTABLE '</font>  <font color=#008000>; EMFANISI MINIMATOS  </font>
+               GOTOXY 1,22  
+               PRINT <font color=#800080>'GIVE ANOTHER CHOICE: '</font>                   <font color=#008000>; EMFANISI MINIMATOS  </font>
+               <font color=#0000FF>JMP</font> CHOOSE_FALSE_B                              <font color=#008000>; ALMA STO LABEL "CHOOSE_FALSE_B" ETSI OSTE O XRISTIS NA MPORI NA KSANADOSI EPILOGI GIA TO AN THA KSANATREKSI TO PROGRAMMA  </font>
+     
+  
+  
+   TELOS:    
+       <font color=#0000FF>CALL</font> CLEAR_SCREEN                        <font color=#008000>; KATHARIZI TIN OTHONI  </font>
+       GOTOXY 3,21  
+       PRINT <font color=#800080>'EXITING FROM THE PROGRAM'</font>         <font color=#008000>;EMFANISI MINIMATOS  </font>
+       GOTOXY 28,4                              <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+       PRINT <font color=#800080>'CREDITS'</font>                          <font color=#008000>;EMFANISI MINIMATOS  </font>
+       GOTOXY 28,5                              <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+       PRINT <font color=#800080>'NAME --&gt; ALEXANDROU KYRIAKOS'</font>       <font color=#008000>;EMFANISI MINIMATOS  </font>
+       GOTOXY 28,6                              <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+       PRINT <font color=#800080>'AEM --&gt; 2632'</font>                        <font color=#008000>;EMFANISI MINIMATOS  </font>
+       GOTOXY 28,7                              <font color=#008000>; ORIZOUME THESI STO KERSORA  </font>
+       PRINT <font color=#800080>'PRESS ANY KEY TO END THE PROGRAM'</font><font color=#008000>;EMFANISI MINIMATOS   </font>
+       <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,0h      <font color=#008000>; MIDENISMOS TOU AH ETSI OSTE NA DOULEPSI SOSTA TO INTERRUPT POU AKOLOUTHI GIA TIN ANAMONI ENOS XARAKTIRA APO TO PLIKTROLOGIO             </font>
+       <font color=#0000FF>INT</font> 16h        <font color=#008000>; INTERRUPT TO OPIO KANI PAUSE TO PROGRAMMA KAI PERIMENI APO TO XRISTI NA PATISI ENA PLIKTRO GIA SINEXIA  </font>
+       PRINT <font color=#800080>''</font>  
+  
+<font color=#0000FF>HLT</font>         <font color=#008000>;STAMATA TO PROGRAMMA  </font>
+  
+DEFINE_SCAN_NUM                  <font color=#008000>; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL SCAN_NUM'  </font>
+DEFINE_PRINT_NUM                 <font color=#008000>; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL PRINT_NUM'  </font>
+DEFINE_PRINT_NUM_UNS             <font color=#008000>; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL PRINT_NUM'  </font>
+DEFINE_CLEAR_SCREEN              <font color=#008000>; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL CLEAR_SCREEN'   </font>
+  
+  
+  
+  
+<font color=#000064>END</font>           <font color=#008000>; OTI KODIKAS IPARXI META TIN ENTOLI END AGNOEITE APO TO PROGRAMMA </font>
+ 
+</font></pre>
+<center> <font color=#FFFFFF>;</font> <a href="http://www.emu8086.com" target="_blank"><font face=verdana size=1 color=#000000> - asm2html - </font></a> </center>
+<!-- emu8086 version 4.08    -->
+<!-- STOP AUTOMATIC ASM TO HTML EXPORT -->
+
+
+
+
+ 
+ 
+<!-- *** -->
+ 
+ 
+</body>
+</html>
