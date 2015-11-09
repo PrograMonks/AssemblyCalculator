@@ -17,8 +17,13 @@ The language notation in the video is in Greeklish (http://en.wikipedia.org/wiki
 Some quick translations by me:
 
 TIPOTA = Nothing
+
 PROSTHESI = addition
+
 AFERESI = subtraction
+
 POLLAPLASIASMOS = multiplication
+
 LOGIKO = Logical
+
 apotelesma = result
