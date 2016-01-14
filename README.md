@@ -14,7 +14,7 @@ Emulator used: http://emu8086.en.lo4d.com/
 The language notation in the video is in Greeklish (http://en.wikipedia.org/wiki/Greeklish) and you can use this website http://services.innoetics.com/greeklish/ to translate from greeklish to greek (thanks to +English Monster for showing me this website). You can then translate greek to english using google translate.
 
 
-Some quick translations by me:
+Some quick translations:
 
 TIPOTA = Nothing
 
