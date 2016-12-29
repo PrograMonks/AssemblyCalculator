@@ -1,0 +1,258 @@
+#make_bin#  
+ 
+; ( A ) 
+  
+include emu8086.inc   ; library
+     
+   
+          
+                        
+; ( B )  
+ 
+ ; set registers to zero
+START:    MOV AX,0h   
+          MOV BX,0h
+          MOV CX,0h
+          MOV DX,0h
+     
+; ( C )             
+        GOTOXY 1,0     
+        PRINT '-_-_-_-_-_-_-_-_-_-_-_-_-_ Kyriakos Alexandrou .|.  _-_-_-_-_-_-_-_-_-_-_-_-_'                    
+        GOTOXY 1,2                        
+        PRINT '1-NOTHING/EXIT'  
+        GOTOXY 1,3  
+        PRINT '2-ADDITION'                                 
+        GOTOXY 1,4  
+        PRINT '3-SUBTRACT'  
+        GOTOXY 1,5  
+        PRINT '4-MULTIPLICATION'  
+        GOTOXY 1,6  
+        PRINT '5-DIVISION'  
+        GOTOXY 1,7  
+        PRINT '6-LOGICAL_AND'  
+        GOTOXY 1,8  
+        PRINT '7-LOGICAL_OR'  
+        GOTOXY 1,9  
+        PRINT '8-LOGICAL_XOR'  
+    
+  
+; ( D )  
+ 
+    GOTOXY 3,12                          ; SET POSITION TO THE CURSOR
+    PRINT 'Give First Number:  '         ; SHOW MESSAGE  
+    CALL SCAN_NUM                        ; USER INPUTS ONE NUMBER AND AUTOMATICALLY GET STORED IN THE REGISTER CX  
+    MOV [0200h],CX                       ; COPY WHATEVER IS IN CX TO MEMORY [0200h]  
+    MOV AX,CX                            ; COPY WHATEVER IS IN CX INTO AX  
+    GOTOXY 3,13                          ; SET POSITION TO THE CURSOR  
+ 
+; ( E )   
+    
+    PRINT 'Give Second Number:  ' 
+    CALL SCAN_NUM                        ; USER INPUTS A NUMBER AND AUTOMATICALLY GETS STORED INTO CX  
+    MOV [0202h],CX                       ; COPY WHATEVER IS IN CX TO [0202h]
+    MOV CX,0h                            ; SET REGISTER CX TO ZERO
+      
+; ( F )       
+                   GOTOXY 2,15             
+                   PRINT 'Give Choice: '  
+CHOOSE_FALSE_A:    CALL SCAN_NUM          ; DINI O XRISTIS ENA NOUMERO KAI AFTOMATA APOTHIKEVETE STON KATAXORITI CX  
+     
+; ( G ) 
+  
+GOTOXY 1,17                    
+CMP CX,1h         ; SIGKRISI AMA TO CX INE ISO ME 1  
+JE TIPOTA         ;   EAN TO CX INE ISO ME 1 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "TIPOTA"   
+CMP CX,2h         ; SIGKRISI AMA TO CX INE ISO ME 2  
+JE PROSTHESI      ;   EAN TO CX INE ISO ME 2 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "PROSTHESI"  
+CMP CX,3h         ; SIGKRISI AMA TO CX INE ISO ME 3  
+JE AFERESI         ;   EAN TO CX INE ISO ME 3 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "AFERESI"  
+CMP CX,4h         ; SIGKRISI AMA TO CX INE ISO ME 4  
+JE POLLAPLASIASMOS;   EAN TO CX INE ISO ME 4 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "POLLAPLASIASMO"  
+CMP CX,5h         ; SIGKRISI AMA TO CX INE ISO ME 5  
+JE DIERESI        ;   EAN TO CX INE ISO ME 5 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "DIERESI"  
+CMP CX,6h         ; SIGKRISI AMA TO CX INE ISO ME 6  
+JE LOGIKO_AND     ;   EAN TO CX INE ISO ME 6 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "LOGIKO_AND"  
+CMP CX,7h         ; SIGKRISI AMA TO CX INE ISO ME 7  
+JE LOGIKO_OR      ;   EAN TO CX INE ISO ME 7 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "LOGIKO_OR"  
+CMP CX,8h         ; SIGKRISI AMA TO CX INE ISO ME 8  
+JE LOGIKO_XOR     ;   EAN TO CX INE ISO ME 8 TOTE TO PROGRAMMA THA KANI ALMA EKI POU VRISKETE TO LABEL ME ONOMA "LOGIKO_XOR"  
+ 
+; ( H )  
+ 
+JMP FALSE_A       ;AN TO NOUMERO DEN INE ISO ME KANENA APO TOUS PARAPANO SINDIASMOUS TOTE TO PROGRAMMA THA KANI ALMA STO LABEL "FALSE_A"  
+      
+  
+  
+; ( I )   
+  
+ ; ( 1 ) 
+  
+TIPOTA:                                   ; ERXETE EDO OTAN TO CX INE ISO ME TO 1  
+                      JMP telos           ; KANI ALMA STO TELOS TOU PROGRAMMATOS  
+                     
+          
+          
+ ; ( 2 ) 
+           
+PROSTHESI:                                ; ERXETE EDO OTAN TO CX INE ISO ME TO 2  
+                   CALL PROSTHESI_a       ; KALOUME TIN IPOROUTINA "PROSTHESIa"  
+                   JMP APOTELESMA         ; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   
+PROSTHESI_a:                                   
+                      PRINT 'PROSTHESI '  ; EMFANISI MINIMATOS  
+                      ADC AX,[0202h]      ; KANI PROSTHESI OTI IPARXI STON AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI APOTHIKEVI TO APOTELESMA STON AX  
+                      MOV [0204h],AX      ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      RET                 ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME   
+  
+ ; ( 3 )    
+AFERESI:                                  ; ERXETE EDO OTAN TO CX INE ISO ME TO 3   
+                   CALL AFERESI_a         ; KALOUME TIN IPOROUTINA "AFERESIa"  
+                   JMP APOTELESMA         ; KANI ALMA STO LABEL "APOTELESMA"  
+AFERESI_a:         
+                      PRINT 'AFERESI '    ; EMFANISI MINIMATOS  
+                      SBB AX,[0202h]      ; KANI AFAIRESI OTI IPARXI STON AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI APOTHIKEVI TO APOTELESMA STON AX  
+                      MOV [0204h],AX      ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      RET                 ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  
+ ; ( 4 ) 
+  
+POLLAPLASIASMOS:                              ; ERXETE EDO OTAN TO CX INE ISO ME TO 4   
+                   CALL POLLAPLASIASMOS_a     ; KALOUME TIN IPOROUTINA "POLLAPLASIASMOSa"  
+                   JMP APOTELESMA             ; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   
+POLLAPLASIASMOS_a:    
+                      PRINT 'POLLAPLASIASMOS '; EMFANISI MINIMATOS    
+                      MOV BX,[0202h]          ; ANTIGRAFI STON KATAXORITI BX OTI IPARXI STI THESI MNIMIS [0202h]  
+                      MUL BX                  ; POLLAPLASIASMOS TOU KATAXORITI BX ME TON KATAXORITI AX KAI APOTHIKEVETE TO APOTELESMA STON AX  
+                      MOV [0204h],AX          ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      RET                     ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  
+            
+; ( 5 )            
+          
+DIERESI:                             ; ERXETE EDO OTAN TO CX INE ISO ME TO 5   
+                   CALL DIERESI_a    ; KALOUME TIN IPOROUTINA "DIERESIa"  
+                   JMP APOTELESMA    ; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   
+DIERESI_a:      
+                   PRINT 'DIERESI '  ; EMFANISI MINIMATOS   
+                      MOV BX,[0202h] ; ANTIGRAFI STON KATAXORITI BX OTI IPARXI STI THESI MNIMIS [0202h]  
+                      DIV BX         ; DIERESI TOU KATAXORITI BX ME TON KATAXORITI AX, TO APOTELESMA APOTHIKEVETE STON AX KAI TO IPOLIPO STON DX  
+                      MOV [0204h],AX ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      MOV [0206h],DX ; KANI ANTIGRAFI TO PERIEXOMENO TOU DX STI THESI MNIMIS [0206]  
+                      RET            ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  
+             
+ ; ( 6 )            
+             
+LOGIKO_AND:                               ; ERXETE EDO OTAN TO CX INE ISO ME TO 6  
+                   CALL LOGIKO_AND_a      ; KALOUME TIN IPOROUTINA "LOGIKO_ANDa"  
+                   JMP APOTELESMA         ; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   
+LOGIKO_AND_a:     
+                      PRINT 'LOGIKO AND ' ; EMFANISI MINIMATOS    
+                      AND AX,[0202h]      ; XRISIMOPOIEI TIN PRAKSI TOU LOGIKOU AND GIA TO AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI TO APOTELESMA APOTHIKEVETE STON AX  
+                      MOV [0204h],AX      ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      RET                 ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  
+             
+ ; ( 7 )            
+             
+LOGIKO_OR:                                  ; ERXETE EDO OTAN TO CX INE ISO ME TO 7  
+                   CALL LOGIKO_OR_a         ; KALOUME TIN IPOROUTINA "LOGIKO_ORa"  
+                   JMP APOTELESMA           ; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   
+LOGIKO_OR_a:    
+                      PRINT 'LOGIKO OR '    ; EMFANISI MINIMATOS   
+                      OR AX,[0202h]         ; XRISIMOPOIEI TIN PRAKSI TOU LOGIKOU OR GIA TO AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI TO APOTELESMA APOTHIKEVETE STON AX  
+                      MOV [0204h],AX        ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      RET                   ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME  
+           
+ ; ( 8 )           
+           
+LOGIKO_XOR:                                 ; ERXETE EDO OTAN TO CX INE ISO ME TO 8  
+                   CALL LOGIKO_XOR_a        ; KALOUME TIN IPOROUTINA "LOGIKO_XORa"  
+                   JMP APOTELESMA           ; KANI ALMA STO LABEL "APOTELESMA" GIA TIN EMFANISI TOU APOTELESMATOS   
+LOGIKO_XOR_a:     
+                      PRINT 'LOGIKO XOR '   ; EMFANISI MINIMATOS        
+                      XOR AX,[0202h]        ; XRISIMOPOIEI TIN PRAKSI TOU LOGIKOU XOR GIA TO AX ME OTI IPARXI STI THESI MNIMIS [0202h] KAI TO APOTELESMA APOTHIKEVETE STON AX  
+                      MOV [0204h],AX        ; KANI ANTIGRAFI TO PERIEXOMENO TOU AX STI THESI MNIMIS [0204] 
+                      RET                   ; META TO TELOS TIS IPOROUTINAS EPISTREFOUME STIN AMESOS EPOMENI ENTOLI APO EKI POU TIN KALESAME           
+; ( J ) 
+             
+APOTELESMA:         
+                   PRINT '-> TO APOTELESMA INE: _-_-_-_-_-_-_-_  '  ; EMFANISI MINIMATOS 
+                   CALL PRINT_NUM                      ; EMFANISI OTI IPARXI APOTHIKEVMENO STON AX  
+                   PRINT '  _-_-_-_-_-_-_-_'           ; EMFANISI MINIMATOS  
+                   GOTOXY 1,19                         ; ORIZOUME THESI STO KERSORA        
+                   PRINT 'PRESS ANY KEY TO CONTINUE'   ; EMFANISI MINIMATOS  
+                   MOV AH,0h                           ; MIDENISMOS TOU AH  
+                   INT 16h                             ; KANI PAUSE TO PROGRAMMA KAI PERIMENI APO TO XRISTI NA PATISI ENA PLIKTRO GIA SINEXIA         
+                   GOTOXY 1,19                         ; ORIZOUME THESI STO KERSORA  
+                   PRINT '                         '     
+                   GOTOXY 1,20                         ; ORIZOUME THESI STO KERSORA  
+                   PRINT 'WOULD YOU LIKE TO RUN THE PROGRAM AGAIN ?'  ; EMFANISI MINIMATOS  
+                   print '     '  
+                   PRINT '1=YES    2=NO'         ; EMFANISI MINIMATOS  
+                   GOTOXY 1,22                   ; ORIZOUME THESI STO KERSORA  
+                   PRINT 'Give Choice: '         ; EMFANISI MINIMATOS  
+; ( K ) 
+  
+CHOOSE_FALSE_B:    
+                   CALL SCAN_NUM      ; DINI O XRISTIS ENA NOUMERO KAI AFTOMATA APOTHIKEVETE STON KATAXORITI CX  
+                   CMP CX,1h          ; SIGKRISI AN TO CX INE ISO ME 1 TOTE EKTELITE I AMESOS EPOMENI ENTOLI IDALOS AGNOA TIN AMESOS EPOMENI ENTOLI  
+                   JE AGAIN           ; ALMA STO LABEL "AGAIN"  
+                   CMP CX,2h          ; SIGKRISI AN TO CX INE ISO ME 2 TOTE EKTELITE I AMESOS EPOMENI ENTOLI IDALOS AGNOA TIN AMESOS EPOMENI ENTOLI  
+                   JE TELOS           ; ALMA STO LABEL "TELOS"  
+                   JMP FALSE_B        ; AN KAMIA APO TIS PROIGOUMENES SINTHIKES DEN ISXIEI TOTE EKTELITE  AFTI I ENTOLI I OPOIA KANI ALMA STO LABEL "FALSE_B" KAI KSANADINI O XRISTIS EPILOGI  
+  
+  
+  
+       
+       
+       
+       
+       
+  
+AGAIN:       
+             CALL CLEAR_SCREEN   ; KATHARIZI TIN OTHONI  
+             JMP START           ; ALMA STO LABEL "START"  
+   
+  
+  
+  
+FALSE_A:               ; GINETE ALMA EDO OTAN O XRISTIS DOSI LATHOS EPILOGI PRAKSIS GIA NA EMFANISTOU TA KATALILA MINIMATA LATHOUS EPILOGIS   
+       PRINT 'THE CHOICE YOU GAVE IS NOT ACCEPTABLE '     ; EMFANISI MINIMATOS  
+       GOTOXY 2,15                                        ; ORIZOUME THESI STO KERSORA  
+       PRINT 'CHOOSE AGAIN: '                             ; EMFANISI MINIMATOS  
+       JMP CHOOSE_FALSE_A                                 ; ALMA STO LABEL "CHOOSE_FALSE_A" ETSI OSTE NA MPORI KSANADOSI O XRISTIS EPILOGI PRAKSIS  
+                                  
+         
+  
+FALSE_B:                 ; AN O XRISTIS DOSI LATHOS EPILOGI GIA TO AN THA KSANATREKSI TO PROGRAMMA I OXI TOTE KANI ALMA EDO KAI EMFANIZONTE TA KATALILA MINIMATA LATHOUS EPILOGIS                                   
+               GOTOXY 1,23                                     ; ORIZOUME THESI STO KERSORA  
+               PRINT 'THE CHOICE YOU GAVE IS NOT ACCEPTABLE '  ; EMFANISI MINIMATOS  
+               GOTOXY 1,22  
+               PRINT 'GIVE ANOTHER CHOICE: '                   ; EMFANISI MINIMATOS  
+               JMP CHOOSE_FALSE_B                              ; ALMA STO LABEL "CHOOSE_FALSE_B" ETSI OSTE O XRISTIS NA MPORI NA KSANADOSI EPILOGI GIA TO AN THA KSANATREKSI TO PROGRAMMA  
+     
+  
+  
+   TELOS:    
+       CALL CLEAR_SCREEN                        ; KATHARIZI TIN OTHONI  
+       GOTOXY 3,21  
+       PRINT 'EXITING FROM THE PROGRAM'         ;EMFANISI MINIMATOS  
+       GOTOXY 28,4                              ; ORIZOUME THESI STO KERSORA  
+       PRINT 'CREDITS'                          ;EMFANISI MINIMATOS  
+       GOTOXY 28,5                              ; ORIZOUME THESI STO KERSORA  
+       PRINT 'NAME --> ALEXANDROU KYRIAKOS'       ;EMFANISI MINIMATOS  
+       GOTOXY 28,6                              ; ORIZOUME THESI STO KERSORA  
+       PRINT 'AEM --> 2632'                        ;EMFANISI MINIMATOS  
+       GOTOXY 28,7                              ; ORIZOUME THESI STO KERSORA  
+       PRINT 'PRESS ANY KEY TO END THE PROGRAM';EMFANISI MINIMATOS   
+       MOV AH,0h      ; MIDENISMOS TOU AH ETSI OSTE NA DOULEPSI SOSTA TO INTERRUPT POU AKOLOUTHI GIA TIN ANAMONI ENOS XARAKTIRA APO TO PLIKTROLOGIO             
+       INT 16h        ; INTERRUPT TO OPIO KANI PAUSE TO PROGRAMMA KAI PERIMENI APO TO XRISTI NA PATISI ENA PLIKTRO GIA SINEXIA  
+       PRINT ''  
+  
+HLT         ;STAMATA TO PROGRAMMA  
+  
+DEFINE_SCAN_NUM                  ; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL SCAN_NUM'  
+DEFINE_PRINT_NUM                 ; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL PRINT_NUM'  
+DEFINE_PRINT_NUM_UNS             ; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL PRINT_NUM'  
+DEFINE_CLEAR_SCREEN              ; MAS EPITREPI TIN XRISI TIS ENTOLIS 'CALL CLEAR_SCREEN'   
+  
+  
+  
+  
+END           ; OTI KODIKAS IPARXI META TIN ENTOLI END AGNOEITE APO TO PROGRAMMA 
